@@ -1,0 +1,2 @@
+MATCH (s:students)-[:register {regtime: "Fall2022"}]->(c:courses)
+RETURN DISTINCT s.name

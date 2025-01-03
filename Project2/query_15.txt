@@ -1,0 +1,2 @@
+MATCH (s:students {gender: "F"})-[:major|minor]->(d:degrees)<-[:administer]-(dep:departments {college: "LAS"})
+RETURN COUNT(s) AS female_count

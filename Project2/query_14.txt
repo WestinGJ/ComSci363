@@ -1,0 +1,5 @@
+MATCH (c:courses)
+OPTIONAL MATCH (s:students)-[r:register]->(c)
+WHERE NOT r.regtime = "fall2024"
+RETURN c.number, c.name, AVG(r.grade) AS average_grade
+ORDER BY c.number

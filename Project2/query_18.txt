@@ -1,0 +1,2 @@
+MATCH (s:students {name: "Lisa"})-[*]-(adj)
+RETURN DISTINCT adj

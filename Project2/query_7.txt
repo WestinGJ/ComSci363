@@ -1,0 +1,5 @@
+MATCH (s:students)-[:major]->(d:degrees)
+WHERE d.level IN ['MS', 'PhD']
+MATCH (s)-[:register]->(c:courses {name: 'Database'})
+RETURN s.name AS StudentName, s.snum AS StudentSnum
+ORDER BY s.snum;

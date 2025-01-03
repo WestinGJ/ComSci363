@@ -1,0 +1,10 @@
+MATCH (d:degrees)
+OPTIONAL MATCH (s:students)-[:major]->(d)
+WITH d as degree, d.level as level, COUNT(s) AS student_count
+WITH min(student_count) as popularity
+MATCH (d:degrees)
+OPTIONAL MATCH (s:students)-[:major]->(d)
+WITH d as degree, d.level as level, COUNT(s) AS student_count, popularity
+WHERE student_count = popularity
+RETURN degree.name, degree.level, student_count
+ORDER BY degree.name

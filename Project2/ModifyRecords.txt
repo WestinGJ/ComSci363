@@ -1,0 +1,20 @@
+MATCH (s:students {ssn: "144673371"})
+SET s.name = "Scott"
+
+MATCH (s:students {ssn: "144673371"})-[r:major]->(d:degrees)
+DELETE r
+WITH s
+MATCH (cs:degrees {name: "Computer Science", level: "MS"})
+CREATE (s)-[:major]->(cs)
+
+MATCH (:students)-[r:register {regtime: "Summer2024"}]->(:courses)
+DELETE r
+
+MATCH (d:departments {name: "Applied Mathematics"})-[:administer]->(deg:degrees)
+DETACH DELETE d, deg
+
+MATCH (c:courses)
+WITH c.department_code AS dept, c.level AS level, MIN(c.number) AS min_course_num
+MATCH (c:courses {department_code: dept, level: level})
+WHERE c.number <> min_course_num
+DETACH DELETE c

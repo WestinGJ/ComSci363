@@ -1,0 +1,5 @@
+MATCH (d:degrees)<-[:major|minor]-(s:students)
+WITH d, SUM(CASE WHEN s.gender = "M" THEN 1 ELSE 0 END) AS male_count,
+           SUM(CASE WHEN s.gender = "F" THEN 1 ELSE 0 END) AS female_count
+WHERE male_count > female_count
+RETURN d.name, d.level
