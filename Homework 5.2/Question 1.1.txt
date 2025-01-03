@@ -1,0 +1,3 @@
+Question 1.1:
+IS lock on F1: Granted
+S lock on p1: Not granted because p1 already has an IX lock (cannot have IX lock and S lock on the same node)

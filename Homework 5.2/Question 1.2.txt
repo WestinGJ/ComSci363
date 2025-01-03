@@ -1,0 +1,8 @@
+Question 1.2:
+To read p3:
+no addition locks needed
+
+To write r6: 
+IX lock on f2: Granted
+SIX lock on p3: Granted
+X lock on r6: Granted 
